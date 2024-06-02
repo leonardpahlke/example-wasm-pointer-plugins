@@ -6,7 +6,17 @@ Steps Involved:
 1. **Request Data**: Initiate a request for data from the WASM module.
 2. **Get WASM Pointer**: Obtain a pointer from the WASM module.
 3. **Transform WASM Pointer to Regular Pointer**: Convert the WASM pointer into a regular pointer that can be used by the parent module.
-4. **Read Data Transfer Object (DTO)**: The DTO holds a pointer to the value we want to read, along with a type reference.
+4. **Read Data Transfer Object (DTO)**: The DTO holds a pointer to the value we want to read, along with the lenght of the value that is referenced (see definition below).
+
+```rust
+#[repr(C)]
+#[derive(Debug)]
+pub struct PluginCollectData {
+    pub offset: i32,
+    pub len: i32,
+}
+```
+ 
 5. **Read Information from DTO Pointer**: Extract the information from the DTO pointer.
 6. **Deallocate Data in WASM Memory (Depending on usecase)**: Depending on the use case, deallocate the data in WASM memory. (Note: This step is not implemented in the current version.)
 
