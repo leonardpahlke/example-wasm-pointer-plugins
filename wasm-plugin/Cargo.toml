@@ -1,0 +1,14 @@
+[package]
+name = "wasm-plugin"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+base64 = "0.22"
+wee_alloc = "0.4.5"
+plugin_shared = { path = "../plugin-shared" }
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/plugin.rs"
+name = "plugin"
